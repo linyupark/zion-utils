@@ -2,7 +2,7 @@
   "name": "zion-utils",
   "version": "0.0.1",
   "description": "JS utils collection",
-  "main": "./dist/index.js",
+  "main": "./dist/index.umd.js",
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "source": "./src/index.ts",
@@ -23,6 +23,10 @@
     ]
   },
   "author": "linyupark@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linyupark/zion-utils"
+  },
   "license": "MIT",
   "dependencies": {
     "tslib": "^2.0.3",
