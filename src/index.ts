@@ -1,3 +1,1 @@
-import * as arr from './array'
-
-export { arr }
+export * as arr from './array'

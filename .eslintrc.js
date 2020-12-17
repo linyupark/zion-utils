@@ -3,24 +3,16 @@ module.exports = {
   parser: '@typescript-eslint/parser', // 定义ESLint的解析器
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'prettier/react',
     'prettier/@typescript-eslint',
   ], // 定义文件继承的子规范
-  plugins: ['@typescript-eslint', 'react', 'prettier'], // 定义了该eslint文件所依赖的插件
+  plugins: ['@typescript-eslint', 'prettier'], // 定义了该eslint文件所依赖的插件
   env: {
     // 指定代码的运行环境
     browser: true,
     commonjs: true,
     node: true,
     es6: true,
-  },
-  settings: {
-    // 自动发现React的版本，从而进行规范react代码
-    react: {
-      version: 'detect',
-    },
   },
   parserOptions: {
     // 指定ESLint可以解析JSX语法
@@ -29,9 +21,6 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-  },
-  globals: {
-    React: 'writable',
   },
   rules: {
     // 在Rules中可以自定义你的React代码编码规范。
@@ -176,9 +165,5 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 0, // 给函数默认值可以为空
     '@typescript-eslint/explicit-module-boundary-types': 0, // 一些不是很重要的模块类型定义
     '@typescript-eslint/no-non-null-assertion': 0, // 允许用！断言不为空
-    'react/display-name': 0, // 一个莫名其妙的Bug
-    'react/no-find-dom-node': 0,
-    'react/prop-types': ['off'], // react 默认的属性定义可以忽略（ts定义即可）
-    'react/react-in-jsx-scope': 0, // 不一定非要 import React 才能食用 jsx
   },
 }
