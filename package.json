@@ -1,0 +1,39 @@
+{
+  "name": "zion-utils",
+  "version": "0.0.1",
+  "description": "JS utils collection",
+  "main": "./dist/index.js",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "source": "./src/index.ts",
+  "scripts": {
+    "dev": "microbundle watch",
+    "build": "microbundle",
+    "prepublish": "npm run build",
+    "prettier": "prettier --parser=typescript --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "author": "linyupark@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "microbundle": "^0.12.4",
+    "prettier": "^2.2.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}
