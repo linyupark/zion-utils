@@ -1,6 +1,6 @@
 {
   "name": "zion-utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "JS utils collection",
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",
@@ -8,7 +8,8 @@
   "source": "./src/index.ts",
   "scripts": {
     "dev": "microbundle watch",
-    "build": "tsc ./src/**/*.ts -t es5 -m umd --outDir ./dist --rootDir ./src && microbundle --compress",
+    "build": "microbundle --compress",
+    "ts-build": "tsc ./src/**/*.ts -t es5 -m umd --outDir ./dist --rootDir ./src",
     "prepublish": "npm run build",
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts"
   },
@@ -28,7 +29,9 @@
     "url": "git+https://github.com/linyupark/zion-utils"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "currency.js": "^2.0.3"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
