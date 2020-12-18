@@ -1,6 +1,6 @@
 {
   "name": "zion-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "JS utils collection",
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",
@@ -8,7 +8,7 @@
   "source": "./src/index.ts",
   "scripts": {
     "dev": "microbundle watch",
-    "build": "tsc ./src/**/*.ts -t es5 -m umd --outDir ./dist --rootDir ./src && microbundle",
+    "build": "tsc ./src/**/*.ts -t es5 -m umd --outDir ./dist --rootDir ./src && microbundle --compress",
     "prepublish": "npm run build",
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts"
   },
