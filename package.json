@@ -4,6 +4,7 @@
   "description": "JS utils collection",
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",
+  "jsnext:main": "./dist/index.esm.js",
   "unpkg": "./dist/index.umd.js",
   "source": "./src/index.ts",
   "scripts": {
@@ -29,8 +30,10 @@
     "url": "git+https://github.com/linyupark/zion-utils"
   },
   "license": "MIT",
-  "dependencies": {
-    "currency.js": "^2.0.3"
+  "peerDependencies": {
+    "react": "^17.x",
+    "react-dom": "^17.x",
+    "mitt": "^2.x"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.10.0",
@@ -42,6 +45,8 @@
     "lint-staged": "^10.5.3",
     "microbundle": "^0.12.4",
     "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "typescript": "^4.1.3"
   }
 }
