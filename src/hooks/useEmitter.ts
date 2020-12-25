@@ -1,6 +1,8 @@
 import mitt, { Emitter } from 'mitt'
 import { useEffect } from 'react'
 
+const useMap = new Map()
+
 interface useEmitterParams {
   emitter?: Emitter
   fns?: {
@@ -21,19 +23,10 @@ const useEmitter = (name?: string, params?: useEmitterParams) => {
     if (Object.prototype.toString.call(result).includes('Promise')) {
       result!
         .then((resolve, reject) => {
-          emitter.on(`${name}.resolve`, () => {
-            emitter.all.delete(`${name}.resolve`)
-          })
-          emitter.on(`${name}.reject`, () => {
-            emitter.all.delete(`${name}.reject`)
-          })
           emitter.emit(`${name}.resolve`, resolve)
           emitter.emit(`${name}.reject`, reject)
         })
         .catch(e => {
-          emitter.on(`${name}.catch`, () => {
-            emitter.all.delete(`${name}.catch`)
-          })
           emitter.emit(`${name}.catch`, e)
         })
     }
@@ -43,15 +36,24 @@ const useEmitter = (name?: string, params?: useEmitterParams) => {
   useEffect(() => {
     if (!name || !fns) return
 
+    useMap.set(name, (useMap.get(name) ?? 0) + 1)
+
     Object.keys(fns).forEach(k => {
       const eventName = `${name}.${k}`
 
-      emitter.on(eventName, (...args) => {
-        execFn(fns[k], eventName, ...args)
-      })
+      emitter.all.set(eventName, [
+        (...args) => {
+          execFn(fns[k], eventName, ...args)
+        },
+      ])
     })
 
     return () => {
+      const times = useMap.get(name)
+
+      if (times > 1) {
+        return useMap.set(name, times - 1)
+      }
       Object.keys(fns).forEach(k => {
         emitter.all.delete(`${name}.${k}`)
       })
