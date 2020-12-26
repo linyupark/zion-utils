@@ -54,6 +54,8 @@ const useEmitter = (name?: string, params?: useEmitterParams) => {
       if (times > 1) {
         return useMap.set(name, times - 1)
       }
+
+      useMap.delete(name)
       Object.keys(fns).forEach(k => {
         emitter.all.delete(`${name}.${k}`)
       })
