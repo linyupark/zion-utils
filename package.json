@@ -1,6 +1,6 @@
 {
   "name": "zion-utils",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "JS utils collection",
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",

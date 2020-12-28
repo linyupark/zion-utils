@@ -1,8 +1,6 @@
 import mitt, { Emitter } from 'mitt'
 import { useEffect } from 'react'
 
-const useMap = new Map()
-
 interface useEmitterParams {
   emitter?: Emitter
   fns?: {
@@ -35,29 +33,21 @@ const useEmitter = (name?: string, params?: useEmitterParams) => {
 
   useEffect(() => {
     if (!name || !fns) return
-
-    useMap.set(name, (useMap.get(name) ?? 0) + 1)
+    const pushedFns = []
 
     Object.keys(fns).forEach(k => {
       const eventName = `${name}.${k}`
+      const fn = (...args) => {
+        execFn(fns[k], eventName, ...args)
+      }
 
-      emitter.all.set(eventName, [
-        (...args) => {
-          execFn(fns[k], eventName, ...args)
-        },
-      ])
+      pushedFns.push(fn)
+      emitter.on(eventName, fn)
     })
 
     return () => {
-      const times = useMap.get(name)
-
-      if (times > 1) {
-        return useMap.set(name, times - 1)
-      }
-
-      useMap.delete(name)
-      Object.keys(fns).forEach(k => {
-        emitter.all.delete(`${name}.${k}`)
+      Object.keys(fns).forEach((k, i) => {
+        emitter.off(`${name}.${k}`, pushedFns[i])
       })
     }
   }, [])
