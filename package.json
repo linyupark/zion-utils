@@ -1,8 +1,8 @@
 {
-  "name": "zion-utils",
-  "version": "0.1.1",
+  "name": "@x011/utils",
+  "version": "1.0.0",
   "description": "JS utils collection",
-  "keywords": ["zion-utils", "js utils", "emitter hooks"],
+  "keywords": ["linyupark", "zion-utils", "lpjs utils", "emitter hooks"],
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",
   "module": "./dist/index.esm.js",
@@ -13,7 +13,7 @@
   "exports": {
     "." : {
       "require": "./dist/index.umd.js",
-      "import": "./dist/index.ems.js"
+      "import": "./dist/index.esm.js"
     }
   },
   "scripts": {
