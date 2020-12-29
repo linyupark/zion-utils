@@ -4,4 +4,4 @@ JS utils collection
 
 ### changelog
 
-* [0.0.5] + str.count, str.pad, obj.map, obj.filter, trans.qs
+* [0.1.1] + First stable version, doc still building
