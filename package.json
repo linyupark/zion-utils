@@ -1,12 +1,21 @@
 {
   "name": "zion-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JS utils collection",
+  "keywords": ["zion-utils", "js utils", "emitter hooks"],
   "main": "./dist/index.js",
   "umd:main": "./dist/index.umd.js",
+  "module": "./dist/index.esm.js",
   "jsnext:main": "./dist/index.esm.js",
   "unpkg": "./dist/index.umd.js",
   "source": "./src/index.ts",
+  "typings": "./dist/index.d.ts",
+  "exports": {
+    "." : {
+      "require": "./dist/index.umd.js",
+      "import": "./dist/index.ems.js"
+    }
+  },
   "scripts": {
     "dev": "microbundle watch",
     "build": "microbundle --compress",
