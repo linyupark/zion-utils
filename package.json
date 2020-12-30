@@ -1,6 +1,6 @@
 {
   "name": "@x011/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JS utils collection",
   "keywords": ["linyupark", "zion-utils", "lpjs utils", "emitter hooks"],
   "main": "./dist/index.js",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "dev": "microbundle watch",
-    "build": "microbundle --compress",
+    "build": "microbundle --compress -i src/number/index.ts -o dist/number/index.js && microbundle --compress -i src/hooks/index.ts -o dist/hooks/index.js && microbundle --compress",
     "ts-build": "tsc ./src/**/*.ts -t es5 -m umd --outDir ./dist --rootDir ./src",
     "prepublish": "npm run build",
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts"
